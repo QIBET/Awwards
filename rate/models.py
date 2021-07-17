@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import cloudinary
 from cloudinary.models import CloudinaryField
 from django.db.models.deletion import CASCADE
+from django.db.models.fields import DateField
 
 
 # Create your models here.
@@ -40,6 +41,7 @@ class Projects(models.Model):
     author = models.ForeignKey('User', on_delete = models.CASCADE,null='True', blank=True)
     livesite = models.URLField()
     image = CloudinaryField('image', blank=True, null=True)
+   
 
     def save(self):
         '''
@@ -52,5 +54,12 @@ class Projects(models.Model):
         method to delete instances of projects
         '''
         self.delete()
+
+    @classmethod
+    def get_projects(cls):
+        '''
+        method to return all projects
+        '''
+        return cls.objects.all()
 
     
