@@ -48,6 +48,6 @@ def login(request):
 		context = {}
 		return render(request, 'registration/login.html', context)
 
-def logoutUser(request):
+def logout(request):
 	logout(request)
 	return redirect('login')
