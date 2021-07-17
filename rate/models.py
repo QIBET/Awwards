@@ -40,3 +40,17 @@ class Projects(models.Model):
     author = models.ForeignKey('User', on_delete = models.CASCADE,null='True', blank=True)
     livesite = models.URLField()
     image = CloudinaryField('image', blank=True, null=True)
+
+    def save(self):
+        '''
+        method to save instances of projects
+        '''
+        self.save()
+
+    def delete_project(self):
+        '''
+        method to delete instances of projects
+        '''
+        self.delete()
+
+    
