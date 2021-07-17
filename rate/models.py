@@ -43,6 +43,10 @@ class Projects(models.Model):
     image = CloudinaryField('image', blank=True, null=True)
    
 
+    def __str__(self):
+        
+        return self.project_name
+    
     def save(self):
         '''
         method to save instances of projects
@@ -61,5 +65,14 @@ class Projects(models.Model):
         method to return all projects
         '''
         return cls.objects.all()
+
+    @classmethod
+    def search_by_project_name(cls,search_term):
+        '''
+        method to search and return project by name
+        '''
+        project = cls.objects.filter(poject_name__icontains=search_term)
+        return project
+
 
     
