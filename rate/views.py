@@ -43,7 +43,7 @@ def login(request):
 				login(request, user)
 				return redirect('index')
 			else:
-				messages.info(request, 'Username OR password is incorrect')
+				messages.info(request, 'Username or password is incorrect')
 
 		context = {}
 		return render(request, 'registration/login.html', context)
