@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required (login_url="login")
 def index(request):
     
     return render(request, 'index.html')
@@ -29,7 +30,7 @@ def register(request):
 		context = {'form':form}
 		return render(request, 'registration/register.html', context)
 
-def login(request):
+def loginUser(request):
 	if request.user.is_authenticated:
 		return redirect('index')
 	else:
@@ -48,6 +49,6 @@ def login(request):
 		context = {}
 		return render(request, 'registration/login.html', context)
 
-def logout(request):
+def logoutUser(request):
 	logout(request)
 	return redirect('login')
