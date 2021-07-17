@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm,UpdateProfileForm,ProfileForm
+from .forms import CreateUserForm, ProjectUploadForm,UpdateProfileForm,ProfileForm
 from .models import Profile
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -77,3 +77,16 @@ def profile_update(request):
     else:
         form = ProfileForm()
         return render(request,'update_profile.html',{"form":form})
+
+def project_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectUploadForm(request.POST,request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+        return redirect('index')
+    else:
+        form = ProjectUploadForm()
+        return render(request,'project_upload.html', {"form":form})

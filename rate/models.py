@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 import cloudinary
 from cloudinary.models import CloudinaryField
-from django.db.models.deletion import CASCADE
 from django.db.models.fields import DateField
 
 
@@ -36,11 +35,12 @@ class Projects(models.Model):
     '''
     class to create instances of projects
     '''
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='project')
     project_name = models.CharField(max_length=30)
     description = models.TextField()
-    author = models.ForeignKey('User', on_delete = models.CASCADE,null='True', blank=True)
     livesite = models.URLField()
     image = CloudinaryField('image', blank=True, null=True)
+    dat_posted = models.DateField()
    
 
     def __str__(self):
