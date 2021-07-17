@@ -9,5 +9,6 @@ urlpatterns=[
     url('register/', views.register, name="register"),
 	url('login/', views.loginUser, name="login"), 
     url('logout/',views.logoutUser,name="logout") ,
-
+    url(r'^profile/$', views.profile,name='profile'),
+    url(r'^edit/$',views.profile_update,name='edit'),
 ]

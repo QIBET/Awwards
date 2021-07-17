@@ -64,4 +64,18 @@ def profile(request):
     
     
     
-    return render(request,'profile.html',{"images":posts,"profile":profile,"current_user":current_user})
+    return render(request,'profile.html',{"profile":profile,"current_user":current_user})
+
+def profile_update(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = current_user
+            image.save()
+        return redirect('profile')
+
+    else:
+        form = ProfileForm()
+        return render(request,'update_profile.html',{"form":form})
