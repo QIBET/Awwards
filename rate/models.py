@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import cloudinary
 from cloudinary.models import CloudinaryField
+from django.db.models.deletion import CASCADE
 
 
 # Create your models here.
@@ -29,3 +30,13 @@ class Profile(models.Model):
         new_bio_object = cls.objects.get(bio = new_bio)
         new_bio = new_bio_object.bio
         return new_bio
+
+class Projects(models.Model):
+    '''
+    class to create instances of projects
+    '''
+    project_name = models.CharField(max_length=30)
+    description = models.TextField()
+    author = models.ForeignKey('User', on_delete = models.CASCADE,null='True', blank=True)
+    livesite = models.URLField()
+    image = CloudinaryField('image', blank=True, null=True)
