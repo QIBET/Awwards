@@ -60,9 +60,7 @@ def profile(request):
 	'''
     current_user=request.user
     profile= Profile.objects.filter(user=current_user).first()
-    posts =  request.user.image_set.all()
-    
-    
+     
     
     return render(request,'profile.html',{"profile":profile,"current_user":current_user})
 

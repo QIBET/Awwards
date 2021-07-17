@@ -11,7 +11,7 @@
 
     {% block styles %}
     {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/insta.css'%}">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     {% endblock %}
 </head>
 
@@ -20,7 +20,7 @@
     <form action="{% url 'edit' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form%}
-        <input type="submit" class="btn btn-success btn-sm" value="Post">
+        <input type="submit" class="btn btn-success btn-sm" value="Update">
     </form>
 
     {% block scripts %}
