@@ -94,3 +94,16 @@ def project_post(request):
     else:
         form = ProjectUploadForm()
     return render(request,'project_upload.html', {"form":form})
+
+def search_results(request):
+
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_project = Projects.search_by_project_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"projects": searched_project})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})

@@ -12,5 +12,6 @@ urlpatterns=[
     url(r'^profile/$', views.profile,name='profile'),
     url(r'^edit/$',views.profile_update,name='edit'),
     url(r'^project/$', views.project_post,name='uploadProject'),
+    url(r'^search/', views.search_results, name='search'),
 
 ]
