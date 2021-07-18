@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 import cloudinary
 from cloudinary.models import CloudinaryField
 from django.db.models.fields import DateField
+from django.utils import timezone 
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -16,7 +18,7 @@ class Profile(models.Model):
 
     def __str__(self):
         
-        return self.profile_photo.url
+        return self.profile_photo
     
     def save_profile(self):
         self.save()
@@ -35,19 +37,19 @@ class Projects(models.Model):
     '''
     class to create instances of projects
     '''
-    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='project')
+    author=models.ForeignKey(User,on_delete=models.CASCADE,blank=True, null=True)
     project_name = models.CharField(max_length=30)
     description = models.TextField()
     livesite = models.URLField()
     image = CloudinaryField('image', blank=True, null=True)
-    dat_posted = models.DateField()
+    date_posted = models.DateField(default=timezone.now)
    
 
     def __str__(self):
         
         return self.project_name
     
-    def save(self):
+    def save_project(self):
         '''
         method to save instances of projects
         '''
@@ -64,8 +66,9 @@ class Projects(models.Model):
         '''
         method to return all projects
         '''
-        return cls.objects.all()
+        all_projects = cls.objects.all()
 
+        return all_projects
     @classmethod
     def search_by_project_name(cls,search_term):
         '''

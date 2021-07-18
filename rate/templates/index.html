@@ -1,3 +1,33 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static %}
 
-<h1>My Jesus is Great</h1>
+{{ block.super}}
+
+{% block content %}
+<!-- Landing Page -->
+<div class="banner">
+    <div class="cover">
+        <div class="container image">
+            <h2 id="category">Project Rating App</h2>
+        
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style='background-color: blanchedalmond;'>
+    <div class="row">
+      {%for project in projects %}
+        <div class="card m-4" style="width: 22rem;">
+          <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap">
+          <div class="card-body" style='background-color: rgb(205, 213, 255);' >
+            <h5 class="card-title" style="font-family: 'Sail', cursive;
+            font-family: 'Vast Shadow', cursive;"><b>Project Name :</b>{{project.project_name}}</h5>
+            <p class="card-text"><b>Project Description :</b><br>{{project.description}}</p>
+            <p class="card-text"><b>Project Author :</b><br>{{project.profile.author}}</p>
+            <a href="{{project.livesite}}" target="_blank" class="btn btn-info">View Site</a>
+          </div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+{%endblock%}

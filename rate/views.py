@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm, ProjectUploadForm,UpdateProfileForm,ProfileForm
-from .models import Profile
+from .models import Profile, Projects
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,8 +10,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required (login_url="login")
 def index(request):
-    
-    return render(request, 'index.html')
+    projects = Projects.get_projects()
+    return render(request, 'index.html', {"projects":projects})
 
 def register(request):
 	if request.user.is_authenticated:
@@ -78,15 +78,19 @@ def profile_update(request):
         form = ProfileForm()
         return render(request,'update_profile.html',{"form":form})
 
+
 def project_post(request):
-    current_user = request.user
+    '''
+    method that post projects 
+    '''
     if request.method == 'POST':
         form = ProjectUploadForm(request.POST,request.FILES)
+        print(form.errors)
         if form.is_valid():
-            image = form.save(commit=False)
-            image.user = current_user
-            image.save()
-        return redirect('index')
+            project = form.save(commit=False)
+            project.user = request.user.profile
+            project.save()
+            return redirect('index')
     else:
         form = ProjectUploadForm()
-        return render(request,'project_upload.html', {"form":form})
+    return render(request,'project_upload.html', {"form":form})
