@@ -1,7 +1,7 @@
 # Project Title
-### Pitch~Ground
+### RateMe
 # Description
-Is a web application that displays a personal gallery of my favorite photos based on places, categories. The application has a modal where a user can view a zoomed image alongside image details.
+The application will allow a user to post a project he/she has created and get it reviewed by his/her peers. A project can be rated based on design, usability and content.
 # BDD [MVP]
 ### As a User i would like;
  * View posted projects and their details
@@ -12,7 +12,7 @@ Is a web application that displays a personal gallery of my favorite photos base
  * View my profile page
 
  # Screenshot of application landing page
-![](static/screenshots/picsurf.png?raw=true "Pic~surf")
+![](static/images/rateme.png?raw=true "Pic~surf")
 
 # SetUp / Installation Requirements
 ### You need to have the following
@@ -33,6 +33,6 @@ Is a web application that displays a personal gallery of my favorite photos base
 
 # Support and contact details 
 Incase of any bottlenecks or challenges, Kindly reach us on Email: bernardonline88@gmail.com 
- * Feel free to clone the repo on Github access link: https://github.com/QIBET/picsurf
+ * Feel free to clone the repo on Github access link: https://github.com/QIBET/RateMe.git
 
 
