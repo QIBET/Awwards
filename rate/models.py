@@ -12,7 +12,7 @@ class Profile(models.Model):
     '''
     class to create user profile
     '''
-    profile_photo = CloudinaryField('image', blank=True, null=True)
+    image = cloudinary.models.CloudinaryField('image',null=True, blank=True)    
     bio = models.TextField(max_length=100)
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
 
@@ -41,7 +41,7 @@ class Projects(models.Model):
     project_name = models.CharField(max_length=30)
     description = models.TextField()
     livesite = models.URLField()
-    image = CloudinaryField('image', blank=True, null=True)
+    image = cloudinary.models.CloudinaryField('image',null=True, blank=True)
     date_posted = models.DateField(default=timezone.now)
    
 
