@@ -1,8 +1,17 @@
 {%extends 'base.html'%}
 {% load bootstrap3 %}
 {% load static %}
+{% load ratings %}
+
 
 {{ block.super}}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+
+  {% endblock %}
+
 
 {% block content %}
 <!-- Landing Page -->
@@ -25,6 +34,7 @@
             <p class="card-text"><b>Project Description :</b><br>{{project.description}}</p>
             <p class="card-text"><b>Project Author :</b><br>{{profile.authror}}</p>
             <a href="{{project.livesite}}" target="_blank" class="btn btn-info">View Site</a>
+            {% ratings object %}
           </div>
         </div>
       {%endfor%}

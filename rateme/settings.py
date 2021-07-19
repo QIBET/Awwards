@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'rate',
     'bootstrap4',
     'bootstrap3',
+    'rest_framework',
+    'star_ratings',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -20,5 +20,6 @@ from django.urls import include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('rate.urls')),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
 
 ]
