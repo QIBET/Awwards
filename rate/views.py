@@ -12,7 +12,6 @@ from .serializer import ProfileSerializer,ProjectsSerializer
 
 
 # Create your views here.
-@login_required (login_url="login")
 def index(request):
     projects = Projects.get_projects()
     return render(request, 'index.html', {"projects":projects})
@@ -82,7 +81,7 @@ def profile_update(request):
         form = ProfileForm()
         return render(request,'update_profile.html',{"form":form})
 
-
+@login_required (login_url="login")
 def project_post(request):
     '''
     method that post projects 
