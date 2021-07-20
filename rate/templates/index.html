@@ -26,9 +26,12 @@
             <h5 class="card-title" style="font-family: 'Sail', cursive;
             font-family: 'Vast Shadow', cursive;"><b>Project Name :</b>{{project.project_name}}</h5>
             <p class="card-text"><b>Project Description :</b><br>{{project.description}}</p>
-            <p class="card-text"><b>Project Author :</b><br>{{profile.authror}}</p>
+            <p class="card-text"><b>Project Author :</b><br>{{project.user}}</p>
+            <p class="card-text"><b>Project Posted on :</b><br>{{project.date_posted}}</p>
+
             <a href="{{project.livesite}}" target="_blank" class="btn btn-info">View Site</a>
-            <div class="ml-4" style="color:grey">
+            <p style="color: teal;"><em>Kindly Help rate this project</em></p>
+            <div class="ml-4" style="color: darkcyan">
               <div class="row">
                 <div class="col-md-12">
                   <h6 style="color:blue">Design Rating</h6>
